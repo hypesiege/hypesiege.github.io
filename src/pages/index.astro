@@ -80,6 +80,11 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://hypesiege.g
     <meta property="og:title" content={site.title} />
     <meta property="og:description" content={site.description} />
     <meta property="og:url" content={canonical} />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' https://ores-chat.github.io; connect-src 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    />
+    <script type="module" src="https://ores-chat.github.io/components/v1/ores-chat-footer-link.js"></script>
     <title>{site.title} — Deterministic campaign operations</title>
   </head>
   <body>
@@ -205,6 +210,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://hypesiege.g
       <footer>
         <span>{site.mark}</span>
         <span>Built in the open with Astro.</span>
+        <ores-chat-footer-link context-id="hypesiege-marketing">
+          <a
+            slot="link"
+            href="https://ores-chat.github.io/chat/?context=hypesiege-marketing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Chat with HypeSiege</a>
+        </ores-chat-footer-link>
         <span>{new Date().getFullYear()}</span>
       </footer>
     </main>
